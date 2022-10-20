@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+<body>
+<app-navbar></app-navbar>
+
+  <div class="container my-4">
+    <div class="row" style="border: 2px solid black; border-radius: 10px;">
+      <div class="col-lg-3 ">
+        <h2 class="m-3">
+          {{book.bookName}}
+        </h2>
+        <div class="poster">
+          <img class="mb-3 mx-3" [src]="book.bookImage" width="250" alt="">
+        </div>
+        <div class="text-center"><button class="m-3 w-50 text-center" (click)="addToList(book.bookId)">Add To List</button></div>
+
+      </div>
+      <div class="col-lg-9 my-4" style="border-left: 2px solid black;">
+
+        <ul style="list-style: none;">
+          <li>
+              <strong>Rating</strong>
+              <h2 class="text-center" style="width: 5%; border: 1px solid black; border-radius: 20px;">{{bookRating}}</h2>
+
+          </li>
+          <li>
+            <h2 class="my-0" style="border-bottom: 1px solid black;"><strong >Synopsis</strong></h2>
+            <!-- <h4>{{book.description}}</h4> -->
+            <h4>{{book.description}}</h4>
+          </li>
+
+          <li>
+            <h3 class="my-0" style="border-bottom: 1px solid black;"><strong>More Info</strong></h3>
+            <h4 class="my-0">Author: {{book.authorName}}</h4>
+            <h4 >Genre: {{book.genre}}</h4>
+          </li>
+
+        </ul>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

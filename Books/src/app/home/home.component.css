@@ -1,0 +1,41 @@
+@media screen and (max-width: 575px) {
+  .row {
+    margin: auto;
+    width: 70%;
+  }
+}
+
+body{
+  background-color: #C3CEDA;
+}
+
+.navbar{
+  background-color: #738FA7 !important;
+}
+
+.nav-link{
+  color: #071330;
+  font-size: 1.1rem;
+}
+
+.navbar-brand{
+  font-weight: 500;
+}
+
+#searchanime{
+  border: 1px solid #071330;
+  border-radius: 10px;
+}
+
+.btn{
+  font-size: 1.1rem;
+}
+
+a{
+  color: #071330;
+  text-decoration: none;
+}
+
+.anime_poster :hover{
+  padding: 2px;
+}

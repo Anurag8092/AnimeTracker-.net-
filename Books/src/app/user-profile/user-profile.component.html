@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+<app-navbar></app-navbar>
+<body>
+  <div class="container">
+  <ul style="list-style: none;" class="mt-4">
+    <img [src]="currentUser.profileImage" class="mr-3 mb-3 rounded-circle" style="width: 180px; height: 210px" alt="User" />
+    <h2 class="mb-0"><li>Name: {{currentUser.fullname}}</li></h2>
+    <h3><li>Email: {{currentUser.email}}</li></h3>
+    <li *ngIf="isAdmin()"><a class="btn" style="border: 1px solid #071330;" routerLink="/admin">Admin</a></li>
+  </ul>
+
+
+    <h2 class="text-center" style="text-decoration: underline;">Your List</h2>
+
+    <table class="table text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Anime</th>
+          <th scope="col">Current Status</th>
+          <th scope="col">Update Status</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Update Rating</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let book of userBookList">
+          <th scope="row"><img [src]="book.bookImage" width="250" alt=""></th>
+          <td> <a [href]="['/book/'+ book.bookId]">{{book.bookName}}</a></td>
+          <td>{{book.readingStatus}}</td>
+          <td> <form [formGroup]="updateStatusForm">
+            <select (change) = "updateReadingStatus(book.bookId)" name="status" id="status" formControlName="status">
+              <option value="Want To Watch">Want To Watch</option>
+              <option value="Watching">Watching</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </form></td>
+          <td>{{book.rating}}</td>
+          <td><form [formGroup]="updateRatingForm">
+            <select (change) = "updateReadingStatus(book.bookId)" name="rating" id="rating" formControlName="rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </form></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1 class="text-center" *ngIf="userBookList.length <= 0">No Records Found!</h1>
+  </div>
+</body>
+</html>
+
+
+
+

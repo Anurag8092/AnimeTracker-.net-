@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Document</title>
+</head>
+<app-navbar></app-navbar>
+<body>
+  <div class="container">
+        <div class="row">
+                <div  class="col-lg-3 col-md-3 col-sm-3 justify-content-center mt-4">
+                    <a [routerLink]="['/newQuery']" class="btn btn-primary btn-block p-2 m-2" style="float: right;" type="button">
+                        NEW DISCUSSION
+                    </a>
+                    <img class="ad mb-1" src="https://res.cloudinary.com/anurag-cloud/image/upload/v1659686042/add_nwfv21.webp" style="width: 100%; height: 40%;" alt="">
+                    <img class="ad" src="https://endlessawesome.com/ezoimgfmt/image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F01%2Fskechers-one-punch-man-collection-release-001.jpg"style="width: 100%; height: 40%;" alt="">
+                  </div>
+            <!-- Inner main -->
+            <div class=" query_list col-lg-8 col-md-8 col-sm-8 ">
+                <!-- Inner main body -->
+
+                <!-- Forum List -->
+                <div  style="border-left: 1px solid black;" class="inner-main-body p-2 p-sm-3 collapse forum-content show mt-2">
+                  <h2>Forums</h2>
+                    <div class=" card mb-2" *ngFor="let query of allQueries">
+                      <a style="font-size: 1.2rem;" [routerLink]="['/query', query.queryId]">
+                        <div class="card-body p-2 p-sm-3">
+                            <div class="media forum-item">
+                              <h3 style="float: right;"># {{query.queryId}}</h3>
+                                <img [src]="query.profileImage" class="mr-3 rounded-circle" style="width: 65px; height: 68px" alt="User" />
+                                <div class="media-body">
+                                    <p class=" d-inline-block text-truncate" style="max-width: 150px;">
+                                      {{query.query}}
+                                    </p>
+                                </div>
+                                <div class="text-muted small text-center align-self-center">
+                                    <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i>Posted on {{query.date}} by {{query.fullname}}</span>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+
+
+
+                </div>
+                <!-- /Forum List -->
+
+                <!-- /Inner main body -->
+            </div>
+            <!-- /Inner main -->
+        </div>
+
+
+    </div>
+</body>
+</html>

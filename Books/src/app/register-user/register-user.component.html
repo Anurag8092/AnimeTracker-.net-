@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<app-navbar></app-navbar>
+<body>
+
+
+  <form [formGroup]="signUpForm" class="my-2 w-75 mx-auto" onSubmit="event.preventDefault()" (ngSubmit)="onSubmit()">
+    <h2>Register</h2>
+    <div *ngIf="isValid" style="color: red;">Fill Form Correctly</div>
+    <span *ngIf="emailExist">Email already Exist</span>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+      <i class="bi bi-person-bounding-box fa-lg me-3 fa-fw"></i>
+      <div class="flex-fill mb-0">
+        <input type="text" id="form3Example1c" class="form-control" placeholder="Your Name" formControlName="name" [(ngModel)]="signUpForm.value.name"/>
+        <span class="error" *ngIf="signUpForm.controls['name'].touched && signUpForm.controls['name'].invalid && signUpForm.controls['name'].errors?.['required']">First Name is required</span>
+        <span class="error" *ngIf="signUpForm.controls['name'].touched && signUpForm.controls['name'].invalid && signUpForm.controls['name'].errors?.['minlength']">Min: 3 characters</span>
+        <span class="error" *ngIf="signUpForm.controls['name'].touched && signUpForm.controls['name'].invalid && signUpForm.controls['name'].errors?.['pattern']">Only Alphabets Allowed</span>
+
+
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+      <i class="bi bi-envelope-paper fa-lg me-3 fa-fw"></i>
+      <div class=" flex-fill mb-0">
+        <input type="email" id="form3Example3c" class="form-control" placeholder="Enter Valid Email Address" formControlName="email"  [(ngModel)]="signUpForm.value.email"/>
+        <span class="error" *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].invalid && signUpForm.controls['email'].errors?.['required']">Email is required</span>
+        <span class="error" *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].invalid && signUpForm.controls['email'].errors?.['pattern']">Email is not valid</span>
+
+      </div>
+    </div>
+    <div class="d-flex flex-row align-items-center mb-4">
+      <i class="bi bi-lock-fill fa-lg me-3 fa-fw"></i>
+      <div class="form-outline flex-fill mb-0">
+        <input type="password" id="form3Example4c" class="form-control" placeholder="Choose Password" formControlName="pass" [(ngModel)]="signUpForm.value.pass"/>
+        <span class="error" *ngIf="signUpForm.controls['pass'].dirty && signUpForm.controls['pass'].invalid && signUpForm.controls['pass'].errors?.['required']">Password is required</span>
+        <span class="error" *ngIf="signUpForm.controls['pass'].dirty && signUpForm.controls['pass'].invalid && signUpForm.controls['pass'].errors?.['minlength']">Password should containt atleast 6 characters</span>
+        <span class="error" *ngIf="signUpForm.controls['pass'].dirty && signUpForm.controls['pass'].invalid && signUpForm.controls['pass'].errors?.['maxlength']">Password is too long</span>
+      </div>
+    </div>
+    <div class="d-flex flex-row align-items-center mb-4">
+      <i class="bi bi-key fa-lg me-3 fa-fw"></i>
+      <div class="form-outline flex-fill mb-0">
+        <input type="password" class="form-control" placeholder="Confirm Password" formControlName="cpass" [(ngModel)]="signUpForm.value.cpass" [ngClass]="{'cnfpass':!signUpForm.controls['pass'].valid}"/>
+        <span *ngIf="signUpForm.controls['cpass'].touched && signUpForm.controls['cpass'].invalid && signUpForm.controls['cpass'].errors?.['required'] && signUpForm.controls['pass'].value == null">Please confirm your password</span>
+        <span *ngIf="signUpForm.controls['cpass'].dirty && signUpForm.controls['cpass'].value != signUpForm.controls['pass'].value && signUpForm.controls['pass'].value != null">Password doesn't match</span>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <input class=" me-2" type="text" value="" id="form2Example3c" formControlName="profImageUrl"/>
+      <label for="form2Example3"> Enter URL of your Profile Photo
+      </label>
+      <br>
+
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-lg">Register</button>
+    </div>
+  </form>
+</body>
+</html>

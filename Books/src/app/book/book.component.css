@@ -1,0 +1,15 @@
+@media screen and (max-width: 1199px) {
+  .col-lg-9{
+    border: none !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .poster{
+    text-align: center !important;
+  }
+}
+
+body{
+  background-color: #C3CEDA;
+}
